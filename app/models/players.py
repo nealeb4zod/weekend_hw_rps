@@ -17,7 +17,7 @@ def get_winner(first_player, second_player):
     elif first_player.move == "rock" and second_player.move == "paper":
         return second_player
     elif first_player.move == "paper" and second_player.move == "rock":
-        return first
+        return first_player
     elif first_player.move == "rock" and second_player.move == "scissors":
         return first_player
     elif first_player.move == "scissors" and second_player.move == "rock":
@@ -26,3 +26,10 @@ def get_winner(first_player, second_player):
         return first_player
     elif first_player.move == "paper" and second_player.move == "scissors":
         return second_player
+
+
+def announce_winner(winner):
+    if winner is None:
+        return "It's a draw!"
+    else:
+        return f" {winner.name}  won!"
