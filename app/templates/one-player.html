@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main>
+
+    <h2>Player 1 - add your name and choose your move!</h2>
+
+    <form class="form" action="/create-player1" method="post">
+        <label for="p1name">Name:</label>
+        <input type="text" name="p1name" id="p1name">
+        <label for="p1move">Select a move:</label>
+        <select name="p1move" id="p1move">
+            <option value="rock">Rock!</option>
+            <option value="paper">Paper</option>
+            <option value="scissors">Scissors</option>
+        </select>
+
+        <br>
+        <br>
+        <input type="submit">
+    </form>
+
+</main>
+
+{% endblock  %}

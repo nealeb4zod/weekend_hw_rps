@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main>
+    {% for player in player_list %}
+    <h3>{{ player.name }} played {{ player.move }}!!</h3>
+
+    {% endfor %}
+    {% if winner == None %}
+    <h2>Draw!!</h2>
+    {% else %}
+    {{ winner.name }} won
+    {% endif %}
+
+</main>
+
+{% endblock  %}

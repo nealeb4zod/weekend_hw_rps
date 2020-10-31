@@ -1,14 +1,8 @@
 from app.models.player import Player
+from random import randint
 
-player_1 = Player("Emilia", "rock")
-player_2 = Player("Tom", "paper")
-player_3 = Player("Rosie", "scissors")
-
-
-def get_player_from_move(move):
-    for player in [player_1, player_2, player_3]:
-        if move == player.move:
-            return player
+player_list = []
+winner = None
 
 
 def get_winner(first_player, second_player):
@@ -28,8 +22,11 @@ def get_winner(first_player, second_player):
         return second_player
 
 
-def announce_winner(winner):
-    if winner is None:
-        return "It's a draw!"
-    else:
-        return f" {winner.name}  won!"
+def get_robot_move():
+    move_number = randint(1, 3)
+    if move_number == 1:
+        return "rock"
+    elif move_number == 2:
+        return "paper"
+    elif move_number == 3:
+        return "scissors"
