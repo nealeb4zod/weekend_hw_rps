@@ -1,6 +1,10 @@
 body {
-    background: rgb(159,212,212);
-    background: linear-gradient(90deg, rgba(159,212,212,1) 49%, rgba(38,187,186,1) 100%);
+    background: rgb(159, 212, 212);
+    background: linear-gradient(
+        90deg,
+        rgba(159, 212, 212, 1) 49%,
+        rgba(38, 187, 186, 1) 100%
+    );
     font-family: Itim, Ariel, sans-serif;
     margin: 0;
 }
@@ -11,10 +15,10 @@ body {
     text-align: center;
     align-items: center;
     padding: 10px;
-    display:grid;
+    display: grid;
     grid-template-areas:
-        'rocktext papertext scissorstext'
-        'rockpic paperpic scissorspic';
+        "rocktext papertext scissorstext"
+        "rockpic paperpic scissorspic";
 }
 #header > img {
     height: 150px;
@@ -26,17 +30,15 @@ main > h2 {
     padding: 10px;
 }
 #choose-opponent {
-    display:grid;
-
+    display: grid;
     align-items: center;
     grid-template-areas:
-        'human-radio a-human-pic'
-        'robot-radio a-robot-pic'
-        'submit-opponent submit-opponent';
+        "human-radio a-human-pic"
+        "robot-radio a-robot-pic"
+        "submit-opponent submit-opponent";
 }
 #submit-opponent {
     justify-self: right;
-
 }
 #choose-opponent > img {
     height: 200px;
@@ -47,11 +49,14 @@ main > h2 {
 
 body > nav {
     background: rgb(165, 209, 209);
-    background: linear-gradient(90deg, rgba(165, 209, 209,1) 49%, rgba(8,140,139,1) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(165, 209, 209, 1) 49%,
+        rgba(8, 140, 139, 1) 100%
+    );
     text-align: center;
     padding: 10px;
     border: 1px inset rgb(196, 240, 240);
-
 }
 
 body > nav > a {
@@ -65,5 +70,28 @@ main {
     width: 83%;
     margin: auto;
     background: rgb(196, 240, 240);
-    height: 100%;
+}
+
+img {
+    height: 150px;
+    width: auto;
+    margin: auto;
+}
+
+#result-grid {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    grid-template-areas:
+        "player-move move-image"
+        "player-move move-image";
+}
+#players-move {
+    font-size: 30pt;
+}
+
+#win-draw-announce {
+    text-align: center;
+    padding: 40px;
+    font-size: 50pt;
 }

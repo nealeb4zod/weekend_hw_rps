@@ -3,15 +3,25 @@
 {% block content %}
 
 <main>
-    {% for player in player_list %}
-    <h3>{{ player.name }} played {{ player.move }}!!</h3>
-
-    {% endfor %}
-    {% if winner == None %}
-    <h2>Draw!!</h2>
-    {% else %}
-    {{ winner.name }} won
-    {% endif %}
+    <div id="result-grid">
+        {% for player in player_list %}
+        <span id="players-move">{{ player.name }} played:</span>
+        {% if player.move == "rock" %}
+        <img id="rockpic" src="{{url_for('static', filename='images/rock.png')}}" alt="Rock symbol">
+        {% elif player.move == "paper" %}
+        <img id="paperpic" src="{{url_for('static', filename='images/paper.png')}}" alt="Paper symbol">
+        {% elif player.move == "scissors" %}
+        <img id="scissorspic" src="{{url_for('static', filename='images/scissors.png')}}" alt="Scissors symbol">
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div id="win-draw-announce">
+        {% if winner == None %}
+        Draw!!
+        {% else %}
+        {{ winner.name }} won!!
+        {% endif %}
+    </div>
 
 </main>
 

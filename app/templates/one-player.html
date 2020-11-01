@@ -3,14 +3,13 @@
 {% block content %}
 
 <main>
+    <h2>Enter your name and choose your move:</h2>
 
-    <h2>Player 1 - add your name and choose your move!</h2>
-
-    <form class="form" action="/create-player1" method="post">
-        <label for="p1name">Name:</label>
-        <input type="text" name="p1name" id="p1name">
-        <label for="p1move">Select a move:</label>
-        <select name="p1move" id="p1move">
+    <form class="form" action="/create-player" method="post">
+        <label for="player-name">Name:</label>
+        <input type="text" name="player-name" id="player-name">
+        <label for="player-move">Select a move:</label>
+        <select name="player-move" id="player-move">
             <option value="rock">Rock!</option>
             <option value="paper">Paper</option>
             <option value="scissors">Scissors</option>

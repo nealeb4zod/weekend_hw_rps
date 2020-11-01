@@ -1,6 +1,6 @@
 import unittest
 
-from app.models.players import *
+from app.models.game import *
 from app.models.player import Player
 
 

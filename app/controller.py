@@ -1,18 +1,17 @@
+import pdb
 from flask import render_template, request, redirect
 from app import app
 
+from app.models.game import *
+from app.models.player import *
 
-from app.models.players import *
+player_list = []
 
 
 @app.route("/")
 def index():
+    player_list.clear()
     return render_template("index.html", title="home")
-
-
-@app.route("/two-players")
-def two_players():
-    return render_template("two-players.html", title="players")
 
 
 @app.route("/one-player")
@@ -22,41 +21,37 @@ def one_player():
 
 @app.route("/choose-opponent", methods=["POST"])
 def choose_opponent():
-    if request.form["opponent"] == "human":
-        return render_template("two-players.html", title="players")
+    player_list.clear()
+    if request.form["opponent"] == "robot":
+        robot_name = "Randy Robot"
+        robot_move = get_robot_move()
+        robot_player = Player(robot_name, robot_move)
+        player_list.append(robot_player)
+        return render_template(
+            "one-player.html", title="player", player_list=player_list
+        )
     else:
-        return render_template("one-player.html", title="players")
+        return render_template(
+            "one-player.html", title="player", player_list=player_list
+        )
 
 
-@app.route("/create-players", methods=["POST"])
-def create_players():
-    player_1_name = request.form["p1name"]
-    player_1_move = request.form["p1move"]
-    player_2_name = request.form["p2name"]
-    player_2_move = request.form["p2move"]
-    player_1 = Player(player_1_name, player_1_move)
-    player_2 = Player(player_2_name, player_2_move)
-    player_list.append(player_1)
-    player_list.append(player_2)
-    winner = get_winner(player_1, player_2)
-    return render_template(
-        "announce-winner.html", player_list=player_list, winner=winner
-    )
-
-
-@app.route("/create-player1", methods=["POST"])
-def create_player1():
-    player_list = []
+@app.route("/create-player", methods=["POST"])
+def create_player():
     winner = None
-    player_1_name = request.form["p1name"]
-    player_1_move = request.form["p1move"]
-    robot_name = "Randy Robot"
-    robot_move = get_robot_move()
-    player_1 = Player(player_1_name, player_1_move)
-    player_2 = Player(robot_name, "paper")
-    player_list.append(player_1)
-    player_list.append(player_2)
-    winner = get_winner(player_1, player_2)
-    return render_template(
-        "announce-winner.html", player_list=player_list, winner=winner
-    )
+    player_name = request.form["player-name"]
+    player_move = request.form["player-move"]
+    player = Player(player_name, player_move)
+    player_list.append(player)
+    if len(player_list) == 2:
+        winner = get_winner(player_list[0], player_list[1])
+        return render_template(
+            "announce-winner.html",
+            player_list=player_list,
+            winner=winner,
+            title="winner",
+        )
+    else:
+        return render_template(
+            "one-player.html", title="player", player_list=player_list
+        )
