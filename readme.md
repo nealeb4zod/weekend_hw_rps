@@ -1,3 +1,6 @@
+http://rps.nealejohnston.com/
+
+
 ## Weekend Homework - Rock Paper Scissors
 
 Create a simple flask app to allow the user to play rock, paper, scissors in their browser.
