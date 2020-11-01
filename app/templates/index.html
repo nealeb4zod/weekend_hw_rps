@@ -2,23 +2,15 @@
 
 {% block content %}
 <main>
+    <h2>Rock Paper Scissors</h2>
+    <h4>The game is played where players choose a move to represent the elements of the game; rock, paper and scissors. The outcome of the game is determined by 3 simple rules:</h4>
+    <ul>
+        <li> Rock wins against scissors.</li>
+        <li>Scissors win against paper.</li>
+        <li>Paper wins against rock.</li>
+    </ul>
     <p>
-    <h2>Choose your opponent:</h2>
-    <div>
-        <form id="choose-opponent" action="/choose-opponent" method="post">
-            <img id="a-human-pic" src="{{url_for('static', filename='images/person.png')}}" alt="A person">
-            <div id="human-radio">
-                <label for="a-human">A Person</label>
-                <input type="radio" name="opponent" id="a-human" value="human" checked />
-            </div>
-            <img id="a-robot-pic" src="{{url_for('static', filename='images/robot.png')}}" alt="A robot">
-            <div id="robot-radio">
-                <label for="a-robot">A Robot</label>
-                <input type="radio" name="opponent" id="a-robot" value="robot" />
-            </div>
-            <input id="submit-opponent" type="submit">
-        </form>
-    </div>
+        Choose "play game" above to start a game...
     </p>
 </main>
 

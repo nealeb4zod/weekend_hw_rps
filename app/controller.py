@@ -10,7 +10,6 @@ player_list = []
 
 @app.route("/")
 def index():
-    player_list.clear()
     return render_template("index.html", title="home")
 
 
@@ -19,11 +18,16 @@ def one_player():
     return render_template("one-player.html", title="player")
 
 
+@app.route("/opponent")
+def opponent():
+    return render_template("opponent.html", title="choose")
+
+
 @app.route("/choose-opponent", methods=["POST"])
 def choose_opponent():
     player_list.clear()
     if request.form["opponent"] == "robot":
-        robot_name = "Randy Robot"
+        robot_name = "HK-47"
         robot_move = get_robot_move()
         robot_player = Player(robot_name, robot_move)
         player_list.append(robot_player)

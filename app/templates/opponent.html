@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <p>
+    <h2>Choose your opponent:</h2>
+    <div>
+        <form id="choose-opponent" action="/choose-opponent" method="post">
+            <img id="a-human-pic" src="{{url_for('static', filename='images/person.png')}}" alt="A person">
+            <div id="human-radio">
+                <label for="a-human">A Meatbag</label>
+                <input type="radio" name="opponent" id="a-human" value="human" checked />
+            </div>
+            <img id="a-robot-pic" src="{{url_for('static', filename='images/robot.png')}}" alt="A robot">
+            <div id="robot-radio">
+                <label for="a-robot">A Robot</label>
+                <input type="radio" name="opponent" id="a-robot" value="robot" />
+            </div>
+            <input id="submit-opponent" type="submit">
+        </form>
+    </div>
+    </p>
+</main>
+
+{% endblock  %}
