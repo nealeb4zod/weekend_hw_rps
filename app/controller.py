@@ -1,16 +1,18 @@
-import pdb
 from flask import render_template, request, redirect
+from random import choice
+
 from app import app
-
 from app.models.game import *
-from app.models.player import *
+from app.models.player import Player
 
-player_list = []
+game = Game()
+print(game.first_player, game.second_player)
 
 
 @app.route("/")
 def index():
-    return render_template("index.html", title="home")
+    game = Game()
+    return render_template("index.html", title="home", game=game)
 
 
 @app.route("/one-player")
@@ -20,42 +22,39 @@ def one_player():
 
 @app.route("/opponent")
 def opponent():
-    return render_template("opponent.html", title="choose")
+    game = Game()
+    return render_template("opponent.html", title="choose", game=game)
 
 
 @app.route("/choose-opponent", methods=["POST"])
 def choose_opponent():
-    player_list.clear()
+    game = Game()
+    print(game.first_player, game.second_player)
     if request.form["opponent"] == "robot":
         robot_name = "HK-47"
-        robot_move = get_robot_move()
+        robot_move = choice(["rock", "paper", "scissors"])
         robot_player = Player(robot_name, robot_move)
-        player_list.append(robot_player)
-        return render_template(
-            "one-player.html", title="player", player_list=player_list
-        )
+        game.add_player_to_game(robot_player)
+        return render_template("one-player.html", title="player", game=game)
     else:
-        return render_template(
-            "one-player.html", title="player", player_list=player_list
-        )
+        return render_template("one-player.html", title="player", game=game)
 
 
 @app.route("/create-player", methods=["POST"])
 def create_player():
-    winner = None
+    print(game.first_player, game.second_player)
     player_name = request.form["player-name"]
     player_move = request.form["player-move"]
     player = Player(player_name, player_move)
-    player_list.append(player)
-    if len(player_list) == 2:
-        winner = get_winner(player_list[0], player_list[1])
+    game.add_player_to_game(player)
+    if game.first_player is not None and game.second_player is not None:
+        game.winner = game.get_winner()
+        player_list = [game.first_player, game.second_player]
         return render_template(
             "announce-winner.html",
             player_list=player_list,
-            winner=winner,
+            winner=game.winner,
             title="winner",
         )
     else:
-        return render_template(
-            "one-player.html", title="player", player_list=player_list
-        )
+        return render_template("one-player.html", title="player", game=game)

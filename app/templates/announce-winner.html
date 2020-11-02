@@ -16,16 +16,15 @@
         {% endfor %}
     </div>
     <div id="win-draw-announce">
+        <p>
         {% if winner == None %}
         Draw!!
         {% else %}
         {{ winner.name }} won!!
         {% endif %}
-        <br><a id="play-again" href="/opponent">Play again!</a>
+        </p>
+        <a id="play-again" href="/opponent">Play again!</a>
     </div>
-
-
-
 </main>
 
 {% endblock  %}

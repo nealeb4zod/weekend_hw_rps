@@ -1,19 +1,26 @@
-from random import choice
+class Game:
+    def __init__(self):
+        self.first_player = None
+        self.second_player = None
+        self.winner = None
 
+    def get_winner(self):
+        if self.first_player.move == self.second_player.move:
+            self.winner = None
+        elif self.first_player.move == "paper" and self.second_player.move == "rock":
+            self.winner = self.first_player
+        elif self.first_player.move == "rock" and self.second_player.move == "scissors":
+            self.winner = self.first_player
+        elif (
+            self.first_player.move == "scissors" and self.second_player.move == "paper"
+        ):
+            self.winner = self.first_player
+        else:
+            self.winner = self.second_player
+        return self.winner
 
-def get_winner(first_player, second_player):
-    if first_player.move == second_player.move:
-        return None
-    elif first_player.move == "paper" and second_player.move == "rock":
-        return first_player
-    elif first_player.move == "rock" and second_player.move == "scissors":
-        return first_player
-    elif first_player.move == "scissors" and second_player.move == "paper":
-        return first_player
-    else:
-        return second_player
-
-
-def get_robot_move():
-    moves = ["rock", "paper", "scissors"]
-    return choice(moves)
+    def add_player_to_game(self, player):
+        if self.first_player == None:
+            self.first_player = player
+        elif self.second_player == None:
+            self.second_player = player
