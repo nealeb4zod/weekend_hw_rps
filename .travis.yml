@@ -1,8 +1,8 @@
 language: python
 python:
-  - "3.8"
+    - "3.8"
 cache: pip
 install:
-  - pip install -r requirements.txt
+    - pip install -r requirements.txt
 script:
-  - python tests.py
+    - python3 run_tests.py
