@@ -1,3 +1,5 @@
+https://travis-ci.org/nealeb4zod/weekend_hw_rps.svg?branch=main
+
 http://rps.nealejohnston.com/
 
 
