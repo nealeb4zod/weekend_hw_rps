@@ -1,4 +1,4 @@
-!https://travis-ci.org/nealeb4zod/weekend_hw_rps.svg?branch=main
+[![Build Status](https://travis-ci.org/nealeb4zod/weekend_hw_rps.svg?branch=main)](https://travis-ci.org/nealeb4zod/weekend_hw_rps)
 
 http://rps.nealejohnston.com/
 
