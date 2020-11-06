@@ -9,5 +9,14 @@ install:
     - pip install -r requirements.txt
 script:
     - nose2
-after_success:
-    - sh .travis/deploy_dockerhub.sh && test “$TRAVIS_BRANCH” = “main” && sh .travis/deploy_heroku.sh
+# after_success:
+# - sh .travis/deploy_dockerhub.sh && test “$TRAVIS_BRANCH” = “main” && sh .travis/deploy_heroku.sh
+deploy:
+    provider: heroku
+    api_key:
+        secure: LH7LE3qx9wcZhVvXT7uJpCO8dtWHazdhRw/Asg0ft2ke+i2xYBG4/oc/Tr12UwDwXxpq1gScNPvo/QEQ9QIhpIznCIOJhcFDMQBXUoIWmFk1dG3XxofxC54RBF/Z1qL7JEX0TCUdkTg9P1JK8rWeJWCAec2cmSGf+mxNJO+IYEKXFNMhZkbvmt4/miXgxuLLxi6seLmCwH/a3VlyhKZOmSsalTmAHu4DZQYLxE1KYaPK786VolhI5kQFzFCDn0O2lI1UdNHi7FtEXdr7mkyI+p6aA7GDJFkxYV/qll/P2vER4SKH25N2AEc6ABOkw8WviZ85KHXExJzkNy9YRfq8dCgK5KImaQfwu8/V/pTOKCCk44DMf5KhpTrLwVX/N8ZmC54XUL9Y+FXhdHMiLg9HCxfFm2IS7vSKb5A5G5RLQdt56ywJyAgbxJ6lyJB6Ypc20PzQj/NMm5t/XqFuzVmRmWvcRJpPQ+uGu7j5sTNuG47NUBXrA9yw4KU3Bwnndsq0vv0wtbW4Tp8N0bP+JKHuxi8bWnvvfEVN9Ay4F6nOJ/eOhBfpVRvYlgDpIMWc1iEBnP/+GvpZ6OAJ8Ur9Eib4u8qMdEA3fnB+KmeJ5X03m5ykXpqTWAuCuVX4toW2uCIU0FgmMzXurAuDI805hfjq6nfEBBoNB3CTHfnGkOfKWZw=
+    app: rock-paper-scissors-neale
+    on:
+        repo: nealeb4zod/weekend_hw_rps
+        branch: main
+    skip_cleanup: "true"
