@@ -10,5 +10,4 @@ install:
 script:
     - nose2
 after_success:
-    - sh .travis/deploy_dockerhub.sh
-    – test “$TRAVIS_BRANCH” = “main” && sh .travis/deploy_heroku.sh
+    - sh .travis/deploy_dockerhub.sh && test “$TRAVIS_BRANCH” = “main” && sh .travis/deploy_heroku.sh
